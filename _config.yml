@@ -100,7 +100,7 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 #gitment
 gitment:
   enable: true
-  owner: "faushine"
-  repo: "faushine.github.io"
-  client_id: "a669191f0c877d94a1c6"
-  client_secret: "6b22d654410eb6ef3af05669e1cadfea061a2698"
+  owner: ""
+  repo: ""
+  client_id: ""
+  client_secret: ""

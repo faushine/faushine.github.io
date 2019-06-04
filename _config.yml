@@ -96,11 +96,3 @@ featured-condition-size: 1              # A tag will be featured if the size of 
     #     href: "#"
     # }
 # ]
-
-#gitalk
-gitalk:
-  enable: false
-  owner: faushine1
-  repo: comment
-  clientId: ddd746defe1154cfd09e
-  clientSecret: b32c846e379d4cfe536b3d34f2b7b28467e96091

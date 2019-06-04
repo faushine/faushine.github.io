@@ -99,7 +99,7 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 
 #gitalk
 gitalk:
-  enable: true
+  enable: false
   owner: faushine1
   repo: comment
   clientId: ddd746defe1154cfd09e

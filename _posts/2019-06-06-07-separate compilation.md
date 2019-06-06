@@ -84,12 +84,16 @@ stop comp
 ```c++
 #ifndef <randomname>
 #define <randomname>
+
 ...
+
 #endif
 
 #ifndef VEC_H
 #define VEC_H
+
 ...
+
 #endif
 ```
 

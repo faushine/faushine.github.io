@@ -24,25 +24,27 @@ can use 'env'
 bin-binary
 env-environment configuration
 
-```
+```bash
 \#!/bin/bash
 ```
 
-```
+```bash
 date
 whoim
 pwd
 ```
 
 - comments start with a '#'
-1st line is called 'shebang' line; must start with #!
-followed by shell to use then options eg -x <-verbose mode
+    1st line is called 'shebang' line; must start with #!
+
+    followed by shell to use then options eg -x <-verbose mode
 
 - file suffix is , by convention, .sh or .bash; but ,not required
   
 - need to tell shell where the 'program' is 
-=> current directory -> './'
-=> make sure you add execute permission to file via : chmod u+x basic
+    &rarr; current directory -> './'
+
+    &rarr; make sure you add execute permission to file via : chmod u+x basic
 
 - variable name are strings; so are the values
   
@@ -50,22 +52,22 @@ followed by shell to use then options eg -x <-verbose mode
   
 - should surround variable name with {3 when used ie. value extracted eg:
 
-```bash
-echo xy
-echo ${x}y
-```
+    ```bash
+    echo xy
+    echo ${x}y
+    ```
 
 - variables can be global to the script
 - use appropriate quotation marks 
 
-```bash
-$Q <- name of the script
-$1 $2 .. <- command line argument
-$# <- number of command line argument
+    ```bash
+    $Q <- name of the script
+    $1 $2 .. <- command line argument
+    $# <- number of command line argument
 
-$? - returen value of conmmand just executed
-$* - concentrate all command line arguments into a single string( by default, separated by a space)
-```
+    $? - returen value of conmmand just executed
+    $* - concentrate all command line arguments into a single string( by default, separated by a space)
+    ```
 
 ### eg: good password
 /dev/null: if redirect output here, it is discarded

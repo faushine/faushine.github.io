@@ -35,7 +35,7 @@ int MAX=10;
 
 ## module: collection of data, types, functions
 
-ideally serves one main purpose (Single Responsibility Principle)
+- ideally serves one main purpose (Single Responsibility Principle)
 
 - a module is made up of:
 
@@ -47,7 +47,7 @@ ideally serves one main purpose (Single Responsibility Principle)
 
 - separate compilation implicates using the "-c" flag when compiling an implementation file (.cc) to create the corresponding object file (.o) and then linking all .o files together to create the executable.
 
--> recompile only what changed, then relink everything.
+    &rarr; recompile only what changed, then relink everything.
 
 - in order to automate this, need to find a way to figure out dependencies and what changed
 
@@ -57,43 +57,43 @@ ideally serves one main purpose (Single Responsibility Principle)
 
 - the file lists all dependencies, and what command (or commands) to run
 
-```bash
-<target> : <dependencies>
-    \t command 1
-    \t command 2
-clean:
-    rm *.o a.out
+    ```bash
+    <target> : <dependencies>
+        \t command 1
+        \t command 2
+    clean:
+        rm *.o a.out
 
-make clean
-```
+    make clean
+    ```
 
 - vec-example 2
 
-CXX <- makes's variable to define c++ compiler
+    CXX &larr; makes's variable to define c++ compiler
 
-CXXFLAGS <- makes var for compiler options
+    CXXFLAGS &larr; makes var for compiler options
 
-make knows how to create a .o file from a .cc without you specifying, -> but still listing dependencies
+    make knows how to create a .o file from a .cc without you specifying, &rarr; but still listing dependencies
 
-stop comp
+    stop comp
 
 - can't have multiple definitions (see example 3)
 
 - use "include guards" to prevent this
 
-```c++
-#ifndef <randomname>
-#define <randomname>
+    ```c++
+    #ifndef <randomname>
+    #define <randomname>
 
-...
+    ...
 
-#endif
+    #endif
 
-#ifndef VEC_H
-#define VEC_H
+    #ifndef VEC_H
+    #define VEC_H
 
-...
+    ...
 
-#endif
-```
+    #endif
+    ```
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "02-shell scripts"
+title: "02-Shell scripts"
 date:   2019-06-06
 author: Faushine
 tags: 
@@ -13,8 +13,7 @@ tags:
 
 ## what is shell scripts?
 
-the file contains a sequence of commands
-executed as ig it was a program
+the file contains a sequence of commands, executed as it was a program
 
 ## How does the operating system know where to look for your program
 
@@ -25,14 +24,18 @@ can use 'env'
 bin-binary
 env-environment configuration
 
+```
 \#!/bin/bash
+```
 
+```
 date
 whoim
 pwd
+```
 
 - comments start with a '#'
-1st line is called 'schebang' line; must start with #!
+1st line is called 'shebang' line; must start with #!
 followed by shell to use then options eg -x <-verbose mode
 
 - file suffix is , by convention, .sh or .bash; but ,not required

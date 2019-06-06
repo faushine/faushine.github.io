@@ -18,12 +18,12 @@ executed as ig it was a program
 
 ## How does the operating system know where to look for your program
 
-it looks in the enviromment variable, PATH
+it looks in the environment variable, PATH
 eg, echo $PATH
 can use 'env'
 
 bin-binary
-env-enviromment configuration
+env-environment configuration
 
 \#!/bin/bash
 
@@ -65,7 +65,7 @@ $* - concentrate all command line arguments into a single string( by default, se
 ```
 
 ### eg: good password
-/dev/null: if redirect outpit here, it is discarded
+/dev/null: if redirect output here, it is discarded
 
 ```bash
 if[...]; then

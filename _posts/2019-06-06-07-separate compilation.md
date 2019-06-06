@@ -45,7 +45,7 @@ ideally serves one main purpose (Single Responsibility Principle)
 
 - by using "separate compilation, only recompile what you have to and "link" the pieces
 
-- separate compilation implicts using the "-c" flag when compiling an implementaion file (.cc) to create the corresponding object file (.o) and then linking all .o files together to create the executable.
+- separate compilation implicates using the "-c" flag when compiling an implementation file (.cc) to create the corresponding object file (.o) and then linking all .o files together to create the executable.
 
 -> recompile only what changed, then relink everything.
 
@@ -69,15 +69,15 @@ make clean
 
 - vec-example 2
 
-CXX <- makes's variable to definde c++ compilier
+CXX <- makes's variable to define c++ compiler
 
-CXXFLAGS <- makes var for compilier options
+CXXFLAGS <- makes var for compiler options
 
 make knows how to create a .o file from a .cc without you specifying, -> but still listing dependencies
 
 stop comp
 
-- can't have multiple definitions (see exanple 3)
+- can't have multiple definitions (see example 3)
 
 - use "include guards" to prevent this
 

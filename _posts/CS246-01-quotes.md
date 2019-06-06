@@ -1,0 +1,79 @@
+---
+layout: post
+title: "01-Quotes"
+date:   2019-06-06
+author: Faushine
+tags: 
+- C++
+---
+## Quotes in bash (see 'man bash')
+
+- backticks, single back quotes->executes command
+eg: ls -al use $(ls -al) instead
+
+- double quotes '' not ""
+
+    ```bash
+    $ -usually port of retrieving var.data
+    ' -single quotes
+    \ -backsbash, usually used to force shell to treat characters
+    *, @, # -are special, will see shortly  
+    ```
+
+- single quote(') 
+  -> no substitution at all
+  
+  -> cannot be nested eg |||
+
+- egrep - extended global regular expression print 
+  ->line-by-line comparsions an input and print
+
+- regular expression and characters plus meta/special charaters that control what matches
+
+    ```bash
+    | -> alternations i.e egrep dog|cat myfile.txt
+    () -> used to group string
+    * -> 0 or more of preceding character eg ba* => b, ba, baaa, or xb, xby
+    + -> 1 or more ....
+    [] -> select *one* of eg. [abcd] => [a-z0-9A-Z]
+    => [^a-d] not abcd
+    ^xgg -> line must start with xgg
+    xgg$ -> line must end with xgg
+    ^xgg$ -> entire line must be xgg
+    ```
+
+### Examples:
+
+Find all occurrences of 'cs246' in f.txt
+egrep cs246 f.txt
+
+Find all occurrences of either 'cs246' of 'cs247'
+egrep cs246|cs247 <f.txt
+or egrep cs24[67] f.txt
+
+Find all lines whose length is even  eg.0 character or 2,4 etc
+egrep "^(..)*$" f.txt
+
+All filenames in current directory, which contain only 1 'a' (but can have other characters)
+ls | egrep "^[^a]*a[^a]*$"
+
+Find all 5-letter words that start with 'e'
+egrep "^e.....$" < /usr/share/dict/words
+
+- globbing patterns is not regular expression 
+
+    ```bash
+    a?=>0 or 1 a 
+    ? [x] man 7 glob
+    * [!x]
+
+    ls -l
+    - rwx rwx rwx
+    owner(user) group other(no r or w there)
+    chmod: change permissions
+    -R recorsive change
+
+    who +(-) what 
+    ugo      rwx
+    eg: chmod -R o-rwx
+    ```

@@ -1,3 +1,12 @@
+---
+layout: post
+title: "Error Prone入门"
+date:   2019-06-06
+author: Faushine
+tags: 
+- ErrorProne
+- Java
+---
 [Error Prone](https://errorprone.info/) 是一款开源的JAVA代码检查工具，它可以在项目编译过程中匹配可能的error pattern并给出相应的修改建议。
 
 ## Installation in Maven

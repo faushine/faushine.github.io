@@ -16,7 +16,7 @@ tags:
 the file contains a sequence of commands
 executed as ig it was a program
 
-## How does the operating system kbow wharer ot look for your program
+## How does the operating system know where to look for your program
 
 it looks in the enviromment variable, PATH
 eg, echo $PATH

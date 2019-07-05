@@ -1,12 +1,18 @@
 ---
 layout: post
-title: "Error Prone入门"
-date:   2019-06-05
+title: "Error Prone VS SpotBugs"
+date:   2019-07-05
 author: Faushine
 tags: 
 - ErrorProne
+- SpotBugs
 - Java
 ---
+
+# Error Prone
+
+## 简介
+
 [Error Prone](https://errorprone.info/) 是一款开源的JAVA代码检查工具，它可以在项目编译过程中匹配可能的error pattern并给出相应的修改建议。
 
 ## Installation in Maven
@@ -72,4 +78,40 @@ tags:
   </profiles>
 ```
 
-To be continued...
+```bash
+mvn compile
+```
+
+# SpotBugs
+
+## 简介
+
+[SpotBugs](https://spotbugs.github.io/) 继承自findbugs，它可以对代码进行静态分析，查找相关的漏洞。其中包括90余种Bad practice，155余种Correctness，9种Experimental， 2种 Internationalization，17种Malicious code vulnerability，46种Multithreaded correctness,4种 Bogus random noise，37种Performance，11种 Security,87种Dodgy。
+
+## Installation in Maven
+
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  ...
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-maven-plugin</artifactId>
+        <version>3.1.13-SNAPSHOT</version>
+        <configuration>
+          <!-- Optional directory to put spotbugs xml report -->
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+  ...
+</project>
+```
+
+执行以下命令运行spotbugs ui
+
+```bash
+mvn spotbugs:gui
+```

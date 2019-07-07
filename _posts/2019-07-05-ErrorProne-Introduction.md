@@ -13,7 +13,7 @@ tags:
 
 ## 简介
 
-[Error Prone](https://errorprone.info/) 是一款开源的JAVA代码检查工具，它可以在项目编译过程中匹配可能的error pattern并给出相应的修改建议。
+[Error Prone](https://errorprone.info/) 是一款开源的JAVA代码检查工具，它将常见编程错误作为运行时错误报告，并给出相应的修改建议。
 
 ## Installation in Maven
 
@@ -82,11 +82,46 @@ tags:
 mvn compile
 ```
 
+## Severity
+
+通过设置编译参数，用户可以决定某个check是否生效，或者重写`sevsrity等级`(Warning vs Error)：
+
+```
+-Xep:<checkName>[:severity]
+```
+`checkName`是[Bug Pattern](https://errorprone.info/bugpatterns)中列举的一系列名称，`severity`即 Warning 或者 Error
+比如：
+
+```
+-Xep:ReferenceEquality  [打开 ReferenceEquality check]
+-Xep:ReferenceEquality:OFF  [关闭 ReferenceEquality check]
+-Xep:ReferenceEquality:WARN  [打开 ReferenceEquality check，检查内容以warning显示]
+-Xep:ReferenceEquality:ERROR  [打开 ReferenceEquality，检查内容以error显示]
+-Xep:ReferenceEquality:OFF -Xep:ReferenceEquality  [打开 ReferenceEquality check]
+```
+
+此外你还可以定义某个目录下的文件不希望被检查：
+
+```
+-XepExcludedPaths:.*/build/generated/.*
+```
+
+由于ErrorProne在项目编译过程中检查程序，一旦发现Error就会停止编译，此时如果想持续编译需要加入以下编译参数，它会把Error当成Warning输出，这样就不会中断编译：
+
+```
+-XepAllErrorsAsWarnings
+```
+
+## Patching 
+
+
+
+
 # SpotBugs
 
 ## 简介
 
-[SpotBugs](https://spotbugs.github.io/) 继承自findbugs，它可以对代码进行静态分析，查找相关的漏洞。其中包括90余种Bad practice，155余种Correctness，9种Experimental， 2种 Internationalization，17种Malicious code vulnerability，46种Multithreaded correctness,4种 Bogus random noise，37种Performance，11种 Security,87种Dodgy。
+[SpotBugs](https://spotbugs.github.io/) 继承自`FindBugs`，它通过对字节码进行静态分析，查找相关的漏洞。其中包括90余种Bad practice，155余种Correctness，9种Experimental， 2种 Internationalization，17种Malicious code vulnerability，46种Multithreaded correctness,4种 Bogus random noise，37种Performance，11种 Security,87种Dodgy。
 
 ## Installation in Maven
 

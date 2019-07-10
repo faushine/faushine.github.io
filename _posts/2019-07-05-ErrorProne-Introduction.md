@@ -32,13 +32,18 @@ tags:
             <arg>-XDcompilePolicy=simple</arg>
             <arg>-Xplugin:ErrorProne</arg>
           </compilerArgs>
+          <!-- 在这里可以添加自定义checker或者lombok作为dependency -->
           <annotationProcessorPaths>
             <path>
               <groupId>com.google.errorprone</groupId>
               <artifactId>error_prone_core</artifactId>
               <version>2.3.3</version>
             </path>
-            <!-- 2.2.0之后的版本开始支持lombok，lombok的依赖需要添加到这里-->
+            <path>
+              <groupId>com.example</groupId>
+              <artifactId>sample-plugin</artifactId>
+              <version>1.0-SNAPSHOT</version>
+            </path>
           </annotationProcessorPaths>
         </configuration>
       </plugin>
@@ -112,8 +117,9 @@ mvn compile
 -XepAllErrorsAsWarnings
 ```
 
-## Patching 
+## Write a custom checker
 
+Error-Prone通过`@AutoService(BugChecker.class)`加载新的checker，官方提供了一个[示例](https://github.com/google/error-prone/tree/master/examples/plugin/maven)可以看看。
 
 
 

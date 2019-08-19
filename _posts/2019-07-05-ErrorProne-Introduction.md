@@ -13,7 +13,7 @@ tags:
 
 ## 简介
 
-[Error Prone](https://errorprone.info/) 是一款由Google开发的开源JAVA代码检查工具，它通过加强编译器的类型检查来匹配bug。起初Goole是想把FindBugs整合到他们的代码库里面，后来实验之后发现FindBugs是编译后生成检查报告，它不会中断编译过程，这就导致很多程序员根本不去修复检查出的bug。所以他们根据ClangMR的经验，也就是把检查过程放到编译中，按照FindBugs的风格写了EP。EP所涵盖的bug不像FindBugs那么多，毕竟它是编译时检查，要是随便碰到个warning就终止编译也太烦了。据官方说上线的每个bug都要vetting in Google's codebase，所以像useless code这种bug就不会报告了。至于性能方面，我在IDEA上对比过 java compiler 和 ep compiler 的编译时间，采用EP来编译代码会多花一倍的时间，其实还能接受。
+[Error Prone](https://errorprone.info/) 是一款由Google开发的开源JAVA代码检查工具，它通过加强编译器的类型检查来匹配bug。起初Goole是想把FindBugs整合到他们的代码库里面，后来实验之后发现FindBugs是编译后生成检查报告，它不会中断编译过程，这就导致很多程序员根本不去修复检查出的bug。所以他们根据ClangMR的经验，也就是把检查过程放到编译中，按照FindBugs的风格写了EP。EP覆盖的bug pattern和FindBugs略有不同，类似`useless code`这种bug并没有收纳在EP里面，官方说上线的每个bug都要 vetting in Google's codebase。至于性能方面，我仅在IDEA上对比过 Java compiler 和 EP compiler 的编译时间，EP比通用编译器多花一倍的时间，其实还能接受。
 
 ## Installation in Maven
 
@@ -205,7 +205,11 @@ Error-Prone通过`@AutoService(BugChecker.class)`加载新的checker，官方提
 </project>
 ```
 
-因为SB是基于字节码分析，所以你得先编译过才行。
+FindBugs 基于字节码分析，需要预先编译：
+
+```
+mvn compile
+```
 
 执行以下命令生成检查报告：
 

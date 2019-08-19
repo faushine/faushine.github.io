@@ -158,7 +158,7 @@ Error-Prone通过`@AutoService(BugChecker.class)`加载新的checker，官方提
 
 ## 简介
 
-[SpotBugs](https://spotbugs.github.io/) （以下简称SB）继承自`FindBugs`，它通过对字节码进行静态分析，查找相关的漏洞。其中包括90余种Bad practice，155余种Correctness，9种Experimental， 2种 Internationalization，17种Malicious code vulnerability，46种Multithreaded correctness,4种 Bogus random noise，37种Performance，11种 Security,87种Dodgy。
+[SpotBugs](https://spotbugs.github.io/) 继承自`FindBugs`，它通过对字节码进行静态分析，查找相关的漏洞。其中包括90余种Bad practice，155余种Correctness，9种Experimental， 2种 Internationalization，17种Malicious code vulnerability，46种Multithreaded correctness,4种 Bogus random noise，37种Performance，11种 Security,87种Dodgy。
 
 ## Installation in Maven
 
@@ -205,7 +205,7 @@ Error-Prone通过`@AutoService(BugChecker.class)`加载新的checker，官方提
 </project>
 ```
 
-FindBugs 基于字节码分析，需要预先编译：
+SpotBugs 基于字节码分析，需要预先编译：
 
 ```
 mvn compile
@@ -217,7 +217,7 @@ mvn compile
 mvn site
 ```
 
-运行SB的图形界面
+运行SpotBugs的图形界面
 ```
 mvn spotbugs:gui
 ```

@@ -119,7 +119,7 @@ Runtime choices:
 
 ## Fault tolerance
 
-### Lost reply from server
+**1. Lost reply from server**
 
 ![alt text](/img/in-post/2019-11-18/rpc-lost.jpg) 
 
@@ -129,7 +129,7 @@ Runtime choices:
 
 ![alt text](/img/in-post/2019-11-18/rpc-onesolv.jpg) 
 
-### Client failure with repeated seq#
+**2. Client failure with repeated seq**
 
 Client rebooted before receiving result and then call func1() with different sequence number. fun1() was acked the second time without execution.
 
@@ -137,7 +137,7 @@ Client rebooted before receiving result and then call func1() with different seq
 
 **Solution**: add clock based conversation id, to every call. *<Conversation_id, seq#>* is strictly increasing.
 
-### Server crash
+**3. Server crash**
 
 Server updated prev.calls table and then crashed.
  

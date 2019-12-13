@@ -119,31 +119,31 @@ Runtime choices:
 
 ## Fault tolerance
 
-1. Lost reply from server
+### Lost reply from server
 
 ![alt text](/img/in-post/2019-11-18/rpc-lost.jpg) 
 
-Solution: Call ID used to enforce **precisely once** semantics of procedure execution. Call sequence numbers are strictly increasing. Each calling activity has a latest call ID stored on callee machines. All the calls made to the callee machines should have Call IDs greater than this number, else the precisely once semantics will be violated.
+**Solution**: Call ID used to enforce **precisely once** semantics of procedure execution. Call sequence numbers are strictly increasing. Each calling activity has a latest call ID stored on callee machines. All the calls made to the callee machines should have Call IDs greater than this number, else the precisely once semantics will be violated.
 
 ![alt text](/img/in-post/2019-11-18/rpc-once.jpg) 
 
 ![alt text](/img/in-post/2019-11-18/rpc-onesolv.jpg) 
 
-2. Client failure with repeated seq#
+### Client failure with repeated seq#
 
 Client rebooted before receiving result and then call func1() with different sequence number. fun1() was acked the second time without execution.
 
 ![alt text](/img/in-post/2019-11-18/rpc-ack.jpg) 
 
-Solution: add clock based conversation id, to every call. *<Conversation_id, seq#>* is strictly increasing.
+**Solution**: add clock based conversation id, to every call. *<Conversation_id, seq#>* is strictly increasing.
 
-3. Server crash
+### Server crash
 
 Server updated prev.calls table and then crashed.
  
 ![alt text](/img/in-post/2019-11-18/rpc-scrash.jpg) 
 
-Solution: Rebind on server restart with new fid.
+**Solution**: Rebind on server restart with new fid.
 
 ![alt text](/img/in-post/2019-11-18/rpc-scsolv.jpg)
 

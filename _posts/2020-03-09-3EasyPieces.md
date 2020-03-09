@@ -53,7 +53,7 @@ What we know:
 
 ### Data structure
 
-OS is a program which has some key data structures to track relevant information. To track the state of process, OS will keep some lists of process to tell him which process is running, ready or blocked. The structure is uesd to store information of process called PCB process control block.
+OS is a program which has some key data structures to track relevant information. To track the state of process, OS will keep some lists of process to tell him which process is running, ready or blocked. The structure is used to store information of process called PCB process control block.
 
 
 ### Process APIs
@@ -69,7 +69,7 @@ Question: How to create and control processes?
 ### Why would we build such interfaces to what should be the simple act of creating a new process?
 
 Answer:
-Think about that the shell is a program. It shows you a prompt and waits you to type something to run. When it recieves you command, it calls fork() to create a new process to execute it.
+Think about that the shell is a program. It shows you a prompt and waits you to type something to run. When it receives you command, it calls fork() to create a new process to execute it.
 
 ### Process Control And Users
 
@@ -100,26 +100,26 @@ Direct execution means run a program on CPU directly. When a OS wants to run a p
  - Execute call main()
 
 ### Problem 1: Restricted operations
-	
+
 When a process wishes to perform some kind of access request to disk or other resources like memory, how could OS achieves that if run process on CPU natively?
-	
+
 One answer is to allow all requests related to IO. It discards permission verify which might not desirable.
-	
+
 The another answer is to introduce a new processor mode: user mode. Code runs in the user mode is restricted in what it can do. In contrast to user mode is kernel mode, code can do what it likes, including privileged operations. The user process performs privileged operations by calling system call (process runs in user mode tells kernel to do what it wants).
-	
+
 ### Problem 2: Switching between processes
-	
+
 CPU can do nothing when it is running a process. So how to regain control of the CPU?
-	
+
 **Approach 1: Cooperative approach**
-	
+
 OS trusts the process to assume it behaves reasonably. The process periodically give up the CPU to avoid runs too long and lets CPU do other tasks. Such operation can be called explicitly by system call yield(). Think about if a process ends up in an infinite loop and never make a system call, what can OS do ?
-	
+
+
 **Approach 2: Non-cooperative approach: the OS takes control**
-	
+
 Use a timer interrupt to raise an interrupt every so many milliseconds and when it happens, the currently running process is halted. Hardware is responsible for saving states of the program to make sure it can be resumed correctly.
-	
-	
+
 ### Saving and Restoring Context
-	
+
 Now that the OS are able to regain the control, a decision has to be made: whether to continue running the currently-running process or switch to another one. If the decision is made to switch, the OS then execute context switch. Mostly OS will execute some assembly code to save registers, PC and the kernel stack pointer of currently-running process.

@@ -101,25 +101,25 @@ Direct execution means run a program on CPU directly. When a OS wants to run a p
 
 ### Problem 1: Restricted operations
 	
-	When a process wishes to perform some kind of access request to disk or other resources like memory, how could OS achieves that if run process on CPU natively?
+When a process wishes to perform some kind of access request to disk or other resources like memory, how could OS achieves that if run process on CPU natively?
 	
-	One answer is to allow all requests related to IO. It discards permission verify which might not desirable.
+One answer is to allow all requests related to IO. It discards permission verify which might not desirable.
 	
-	The another answer is to introduce a new processor mode: user mode. Code runs in the user mode is restricted in what it can do. In contrast to user mode is kernel mode, code can do what it likes, including privileged operations. The user process performs privileged operations by calling system call (process runs in user mode tells kernel to do what it wants).
+The another answer is to introduce a new processor mode: user mode. Code runs in the user mode is restricted in what it can do. In contrast to user mode is kernel mode, code can do what it likes, including privileged operations. The user process performs privileged operations by calling system call (process runs in user mode tells kernel to do what it wants).
 	
 ### Problem 2: Switching between processes
 	
-	CPU can do nothing when it is running a process. So how to regain control of the CPU?
+CPU can do nothing when it is running a process. So how to regain control of the CPU?
 	
 **Approach 1: Cooperative approach**
 	
-	OS trusts the process to assume it behaves reasonably. The process periodically give up the CPU to avoid runs too long and lets CPU do other tasks. Such operation can be called explicitly by system call yield(). Think about if a process ends up in an infinite loop and never make a system call, what can OS do ?
+OS trusts the process to assume it behaves reasonably. The process periodically give up the CPU to avoid runs too long and lets CPU do other tasks. Such operation can be called explicitly by system call yield(). Think about if a process ends up in an infinite loop and never make a system call, what can OS do ?
 	
 **Approach 2: Non-cooperative approach: the OS takes control**
 	
-	Use a timer interrupt to raise an interrupt every so many milliseconds and when it happens, the currently running process is halted. Hardware is responsible for saving states of the program to make sure it can be resumed correctly.
+Use a timer interrupt to raise an interrupt every so many milliseconds and when it happens, the currently running process is halted. Hardware is responsible for saving states of the program to make sure it can be resumed correctly.
 	
 	
 ### Saving and Restoring Context
 	
-    Now that the OS are able to regain the control, a decision has to be made: whether to continue running the currently-running process or switch to another one. If the decision is made to switch, the OS then execute context switch. Mostly OS will execute some assembly code to save registers, PC and the kernel stack pointer of currently-running process.
+Now that the OS are able to regain the control, a decision has to be made: whether to continue running the currently-running process or switch to another one. If the decision is made to switch, the OS then execute context switch. Mostly OS will execute some assembly code to save registers, PC and the kernel stack pointer of currently-running process.
